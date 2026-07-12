@@ -220,6 +220,17 @@ platform_do_upgrade() {
 		CI_ROOTPART="rootfs"
 		emmc_do_upgrade "$1"
 		;;
+	beeconmini,seed-ac1|\
+	beeconmini,seed-ac2|\
+	beeconmini,seed-ac3)
+		CI_KERNPART="kernel"
+		CI_ROOTPART="rootfs"
+		CI_DATAPART="rootfs_data"
+		emmc_do_upgrade "$1"
+		;;
+	*)
+		nand_do_upgrade "$1"
+		;;
 	asus,rt-ax52|\
 	asus,rt-ax57m|\
 	asus,rt-ax59u|\
@@ -231,7 +242,6 @@ platform_do_upgrade() {
 		CI_KERNPART="linux"
 		nand_do_upgrade "$1"
 		;;
-        beeconmini,seed-ac1|\
 	buffalo,wsr-3000ax4p|\
 	xiaomi,mi-router-ax3000t|\
 	xiaomi,mi-router-wr30u-stock|\
@@ -444,8 +454,10 @@ platform_copy_config() {
 	acer,predator-w6d|\
 	acer,vero-w6m|\
 	airpi,ap3000m|\
+        beeconmini,seed-ac1|\
+	beeconmini,seed-ac2|\
+	beeconmini,seed-ac3|\
 	arcadyan,mozart|\
-                beeconmini,seed-ac1|\
 	glinet,gl-mt2500|\
 	glinet,gl-mt2500-airoha|\
 	glinet,gl-mt6000|\
